@@ -14,5 +14,5 @@ export default combineReducers({
     trips: tripsReducer,
     currentUser: currentUserReducer,
     tripParks: tripParksReducer,
-    currentTrip: currentTripReducer
+    currentTrips: currentTripReducer
   })

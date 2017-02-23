@@ -7,7 +7,7 @@ import TripThumbnail from './TripThumbnail'
 class TripList extends Component {
   render() {
 
-    if (!this.props.currentTrip.parks) {
+    if (!this.props.currentTrips) {
       return (
         <div className="TripList fl w-20">
           <h1 className="TripListName tc">Login to make a &uarr; trip! </h1>
@@ -15,14 +15,14 @@ class TripList extends Component {
       )
     }
 
-    if (this.props.currentTrip.parks) {
-      var list = this.props.currentTrip.parks.map(park => <div><TripThumbnail park = {park}/></div>)
+    if (this.props.currentTrips) {
+      var list = this.props.currentTrips.map(trip => <div><TripThumbnail trip = {trip}/></div>)
     }
 
-    if (this.props.currentTrip.parks) {
+    if (this.props.currentTrips) {
       return (
         <div className="TripList fl w-20">
-          <h2 className="TripListName">{this.props.currentTrip.trip.name}</h2>
+          <h2 className="TripListName">{this.props.currentTrips}</h2>
           <ul>{list}</ul>
         </div>
       )
@@ -38,7 +38,7 @@ class TripList extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentTrip: state.currentTrip
+    currentTrips: state.currentTrips
   }
 }
 

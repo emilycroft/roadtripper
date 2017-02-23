@@ -1,4 +1,4 @@
-export default (state={}, action) => {
+export default (state=[], action) => {
   switch (action.type) {
     case 'CREATE_TRIP':
       return {trip: action.payload.trip, parks: action.payload.parks}
@@ -6,10 +6,9 @@ export default (state={}, action) => {
       console.log(state.parks)
       return {trip: action.payload.trip, parks: action.payload.parks}
     case 'REMOVE_PARK_FROM_TRIP':
-      console.log(state.parks)
-      return {trip: action.payload.trip, parks: action.payload.parks}
+      return {trips: action.payload.trip, parks: action.payload.parks}
     case 'FETCH_TRIP':
-      return {trip: action.payload.trip, parks: action.payload.parks}
+      return action.payload
     case 'LOG_IN_USER':
       return {trip: action.payload.data.trip, parks: action.payload.data.parks}
     case 'LOG_OUT_USER':

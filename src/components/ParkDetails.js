@@ -7,11 +7,11 @@ import { addParkToTrip, removeParkFromTrip } from '../actions/index'
 class ParkDetails extends Component {
 
   handleButtonClickAdd() {
-    this.props.addParkToTrip({park: this.props.currentPark, trip: this.props.currentTrip})
+    this.props.addParkToTrip({park: this.props.currentPark, trip: this.props.currentTrips})
   }
 
   handleButtonClickRemove() {
-    this.props.removeParkFromTrip({park: this.props.currentPark, trip: this.props.currentTrip})
+    this.props.removeParkFromTrip({park: this.props.currentPark, trip: this.props.currentTrips})
   }
 
   render() {
@@ -19,12 +19,12 @@ class ParkDetails extends Component {
       cursor: "pointer"
     }
 
-    if (this.props.currentTrip.parks) {
-      var parkIds = this.props.currentTrip.parks.map((park) => park.id)
+    if (this.props.currentTrips) {
+      var parkIds = this.props.currentTrips.map((trip) => trip.parks.map((park)=> park))
     }
 
 
-    if (!this.props.currentTrip.parks) {
+    if (!this.props.currentTrips) {
       return (
         <div className="ParkDetails fl w-50" >
           <h2 className="ParkDetailsText">{this.props.currentPark.name}</h2>
@@ -71,7 +71,7 @@ class ParkDetails extends Component {
 function mapStateToProps(state) {
   return {
     currentPark: state.currentPark,
-    currentTrip: state.currentTrip
+    currentTrips: state.currentTrips
   }
 }
 
